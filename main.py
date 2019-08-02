@@ -44,7 +44,6 @@ def main():
             print("== Please give me number greater than Zer0!")
             player_bank = -1
         else:
-            player_bank_verification = True
             print("----")
             print("Ok, you have", player_bank, "$! Let's play!!")
             print("----")
@@ -153,22 +152,22 @@ def game_continue():
     """
     Here the game ask the player if he wants to continue the game
     """
-    game_continue = ""
+    game = ""
 
     print("")
     print("----")
 
-    while game_continue == "":
+    while game == "":
         player_answer = input("Do you want to continue the game? [Y/N] ")
         if player_answer in ("Yes", "YES", "Y", "y", "yes"):
-            game_continue = True
+            game = True
         elif player_answer in ("No", "NO", "N", "n", "no"):
-            game_continue = False
+            game = False
             print("Oooooh, sorry you want to leave. See you soon !")
         else:
             print("Sorry I did not understand your answer.")
 
-    return game_continue
+    return game
 
 if __name__ == '__main__':
     main()
