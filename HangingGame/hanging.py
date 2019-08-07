@@ -57,5 +57,8 @@ def main():
         # Ask the player if she/he wants to continue
         game_continue = functions.continue_menu()
 
+    # Save the player's score
+    functions.save_gamer(pseudo, score)
+
 if __name__ == '__main__':
     main()

@@ -35,6 +35,30 @@ def register_gamer():
 
     return pseudo, score
 
+def save_gamer(pseudo, score):
+    """
+    Save the gamer informations in 'scores'
+    """
+
+    try:
+        with open('scores', mode='rb') as scores_file:
+            depickler_file = pickle.Unpickler(scores_file)
+            gamers = depickler_file.load()
+
+        gamers[pseudo] = score
+        with open('scores', mode='wb') as scores_file:
+            pickler_file = pickle.Pickler(scores_file)
+            pickler_file.dump(gamers)
+    except OSError: # The file 'scores' doesn't exist
+        with open('scores', mode='xb') as scores_file:
+            pickler_file = pickle.Pickler(scores_file)
+
+            gamers = {pseudo: score}
+
+            pickler_file.dump(gamers)
+    finally:
+        print('Your pseudo and your score are saved.')
+
 def get_word():
     """
     The program reach a word from 'dictionary.txt'
