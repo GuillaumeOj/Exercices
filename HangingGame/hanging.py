@@ -2,7 +2,7 @@
 """
 Author : GuillaumeOj
 Version : 2019-08
-Source : https://openclassrooms.com/fr/courses/235344-apprenez-a-programmer-en-python/232565-tp-realisez-un-bon-vieux-pendu
+Source : https://bit.ly/2OFDxLc
 
 
 Welcome to my first Hanging game
@@ -16,6 +16,7 @@ Here is how it works:
     b. The final is the old one + life saved durign the game
 """
 import functions
+import data
 
 def main():
     """
@@ -34,6 +35,10 @@ def main():
         print('Welcome {}! For now, you score is {}.'.format(pseudo, score))
         print('Let\'s begin the game!')
         print('=====================================')
+
+        # Get the game configuration
+        life_configuration, hanging_tree = data.game_configuration()
+        life = int(life_configuration)
 
 if __name__ == '__main__':
     main()
