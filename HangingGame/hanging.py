@@ -24,7 +24,7 @@ def main():
     """
 
     game_continue = True
-    
+
     print('=== Welcome to the Hanging Game ! ===')
     print('\n')
 
@@ -38,8 +38,7 @@ def main():
     while game_continue:
 
         # Get the game configuration
-        life_configuration, hanging_tree = data.game_configuration()
-        life = int(life_configuration)
+        lives, hanging_tree = data.game_configuration()
 
         # Get a word for the game
         word = functions.get_word()
@@ -47,7 +46,13 @@ def main():
         # Create a string for hide the word
         hidden_word = functions.hide_word(word)
 
-        print('The word to find is: {}'.format(hidden_word))
+        # The game is about to start
+        game_score = functions.game(lives, hanging_tree, word, hidden_word)
+
+        score += game_score
+
+        # We inform the player about her/his score
+        print('Youre score is now {}'.format(score))
 
 if __name__ == '__main__':
     main()

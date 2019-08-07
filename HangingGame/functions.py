@@ -12,7 +12,7 @@ def register_gamer():
     Else we retrieved gamer's informations (pseudo and score)
     """
 
-    pseudo = input('Please type your pseudo: ')
+    pseudo = input('==> Please type your pseudo: ')
 
     try:
         with open('scores', mode='rb') as scores_file:
@@ -57,6 +57,65 @@ def hide_word(word):
             hidden_word = '*'
 
     return hidden_word
+
+def game(lives, hanging_tree, word, hidden_word):
+    """
+    The core function for play to the game
+    """
+    letters_played = list()
+    word = list(word)
+    hidden_word = list(hidden_word)
+
+    while lives > 0 and hidden_word != word:
+        # We ask the player a letter
+        try:
+            print('\nThe word to find is: {}'.format(''.join(hidden_word)))
+            player_letter = input('==> Type a letter: ')
+            player_letter = player_letter[0].upper()
+            assert player_letter in 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+        except AssertionError:
+            print('Please type a correct letter.')
+            continue
+
+        # We check the player have not already give this letter
+        if player_letter in letters_played:
+            print('You already give this letter.')
+            continue
+        else:
+            letters_played.append(player_letter)
+
+        # We check if the letter is in the word to find
+        find_letter = False
+        for i, letter in enumerate(word):
+            if letter == player_letter:
+                hidden_word[i] = player_letter
+                find_letter = True
+
+        # We check if the player found a letter
+        if find_letter:
+            print('Yes, "{}" is in the word.'.format(player_letter))
+        else:
+            lives -= 1
+            print('No, "{}" is not in the word'.format(player_letter))
+            display_tree(hanging_tree, lives)
+
+    # We check if the word is completly found by the gamer
+    if hidden_word == word:
+        print('\nCongratulation! You found the word "{}"'.format(''.join(word)))
+    else:
+        print('\nYou loose!')
+        print('The word was: {}'.format(''.join(word)))
+
+    return lives
+
+def display_tree(hanging_tree, lives):
+    """
+    Draw an hanging tree each time the player give a wrong letter
+    """
+
+    for line in hanging_tree[lives]:
+        print(line)
+
 
 
 if __name__ == '__main__':
