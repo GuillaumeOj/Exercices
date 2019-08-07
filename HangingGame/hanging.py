@@ -52,7 +52,10 @@ def main():
         score += game_score
 
         # We inform the player about her/his score
-        print('Youre score is now {}'.format(score))
+        print('\nYoure score is now {}'.format(score))
+
+        # Ask the player if she/he wants to continue
+        game_continue = functions.continue_menu()
 
 if __name__ == '__main__':
     main()

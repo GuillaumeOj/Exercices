@@ -50,11 +50,11 @@ def hide_word(word):
     """
     Return a string of '*' with en length equivalent to 'word'
     """
-    for letter in word:
-        try:
-            hidden_word += '*'
-        except NameError:
-            hidden_word = '*'
+    word_length = len(word)
+    hidden_word = str()
+    while word_length > 0:
+        hidden_word += '*'
+        word_length -= 1
 
     return hidden_word
 
@@ -116,7 +116,31 @@ def display_tree(hanging_tree, lives):
     for line in hanging_tree[lives]:
         print(line)
 
+def continue_menu():
+    """
+    A menu to ask the player if she/he wants to continue the game
+    """
+    player_answer = ''
 
+    while player_answer == '':
+        try:
+            player_answer = input('\n\n==> Do you want to continue to play? [Y/N] ')
+            player_answer = player_answer.upper()
+
+            assert player_answer in ('YES', 'NO', 'Y', 'N')
+        except AssertionError:
+            print('Please type a correct answer')
+            player_answer = ''
+            continue
+
+    if player_answer in ('YES', 'Y'):
+        print('\nLet\'s gor for an other game!')
+        game_continue = True
+    else:
+        print('\nOoooh. See you another time!')
+        game_continue = False
+
+    return game_continue
 
 if __name__ == '__main__':
     print('Access denied.')
