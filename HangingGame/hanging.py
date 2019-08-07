@@ -24,17 +24,18 @@ def main():
     """
 
     game_continue = True
+    
+    print('=== Welcome to the Hanging Game ! ===')
+    print('\n')
+
+    # Creating the player
+    pseudo, score = functions.register_gamer()
+
+    print('Welcome {}! For now, you score is {}.'.format(pseudo, score))
+    print('Let\'s begin the game!')
+    print('=====================================')
 
     while game_continue:
-        print('=== Welcome to the Hanging Game ! ===')
-        print('\n')
-
-        # Creating the player
-        pseudo, score = functions.register_gamer()
-
-        print('Welcome {}! For now, you score is {}.'.format(pseudo, score))
-        print('Let\'s begin the game!')
-        print('=====================================')
 
         # Get the game configuration
         life_configuration, hanging_tree = data.game_configuration()
