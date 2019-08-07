@@ -42,7 +42,11 @@ def main():
 
         # Get a word for the game
         word = functions.get_word()
-        print(word)
+
+        # Create a string for hide the word
+        hidden_word = functions.hide_word(word)
+
+        print('The word to find is: {}'.format(hidden_word))
 
 if __name__ == '__main__':
     main()

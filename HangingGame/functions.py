@@ -46,6 +46,18 @@ def get_word():
 
     return word
 
+def hide_word(word):
+    """
+    Return a string of '*' with en length equivalent to 'word'
+    """
+    for letter in word:
+        try:
+            hidden_word += '*'
+        except NameError:
+            hidden_word = '*'
+
+    return hidden_word
+
 
 if __name__ == '__main__':
     print('Access denied.')
