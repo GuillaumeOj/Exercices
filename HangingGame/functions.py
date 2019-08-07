@@ -3,6 +3,7 @@
 All functions used for the hanging game are here
 """
 import pickle
+import random
 
 def register_gamer():
     """
@@ -33,6 +34,18 @@ def register_gamer():
             pickler_file.dump(gamers)
 
     return pseudo, score
+
+def get_word():
+    """
+    The program reach a word from 'dictionary.txt'
+    """
+    with open('dictionary.txt', mode='r') as dictionary:
+        dictionary_data = dictionary.readlines()
+        random_number = random.randrange(0, len(dictionary_data))
+        word = dictionary_data[random_number].replace('\n', '')
+
+    return word
+
 
 if __name__ == '__main__':
     print('Access denied.')

@@ -13,7 +13,7 @@ Here is how it works:
     b. The player is new, we create her/his profile in 'scores' file
 2. The player has to find the world selected by the game:
     a. 8 life by game
-    b. The final is the old one + life saved durign the game
+    b. The final score is the old one + lives saved during the game
 """
 import functions
 import data
@@ -39,6 +39,10 @@ def main():
         # Get the game configuration
         life_configuration, hanging_tree = data.game_configuration()
         life = int(life_configuration)
+
+        # Get a word for the game
+        word = functions.get_word()
+        print(word)
 
 if __name__ == '__main__':
     main()
