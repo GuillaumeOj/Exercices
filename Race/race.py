@@ -1,5 +1,8 @@
+# -*- coding:utf-8 -*-
 """
-On veut faire une course sur un parcours aléatoirement construit et des participants aléatoires. Pour cela on va faire deux classes TrackPart et Track pour modéliser une piste hétérogène et deux classes Pilot et Car pour faire un combo participant de course.
+On veut faire une course sur un parcours aléatoirement construit et des participants aléatoires.
+Pour cela on va faire deux classes TrackPart et Track pour modéliser une piste hétérogène et deux
+classes Pilot et Car pour faire un combo participant de course.
 
 Voici les attributs et méthodes des classes à faire.
 
@@ -25,12 +28,12 @@ Class Car, liste des attributs:
 - mud_speed: Un nombre flottant entre 0.5 et 1.5
 - rocky_speed: Un nombre flottant entre 0.5 et 1.5
 Et il faut aussi faire les méthodes d'instance suivantes:
-- time_for_part: prends comme argument un TrackPart et donne le temps pour la voiture/pilote sur le tronçon
-                 il faut prendre en compte le terrain (et vitesse de voiture sur ce terrain)
-                 et aussi la complexité (et la vitesse de pilote pour ce genre de complexité)
-                 on multiplie les vitesses (en partant d'une vitesse de 1) avec la longueur du tronçon
-- time_for_track: prends comme argument un Track et utilise time_for_part sur les différents tronçons
-                  renvoie le temps total sur la piste
+- time_for_part: prends comme argument un TrackPart et donne le temps pour la voiture/pilote sur le
+             tronçon il faut prendre en compte le terrain (et vitesse de voiture sur ce terrain)
+             et aussi la complexité (et la vitesse de pilote pour ce genre de complexité)
+             on multiplie les vitesses (en partant d'une vitesse de 1) avec la longueur du tronçon
+- time_for_track: prends comme argument un Track et utilise time_for_part sur les différents
+             tronçons renvoie le temps total sur la piste
 
 Faire un print pour chacun des éléments suivants
 1) Générer une piste avec 20 tronçons
@@ -39,12 +42,23 @@ Faire un print pour chacun des éléments suivants
 4) Indiquer le vainqueur
 
 En lançant le script on devrait avoir un affichage du genre qui suit:
-Using track: rapid sand (3) + subtle rocky (4) + rapid asphalt (6) + rapid asphalt (9) + subtle rocky (9) + normal rocky (8) + rapid mud (4) + rapid sand (6) + subtle rocky (9) + normal rocky (6) + normal asphalt (3) + subtle asphalt (6) + rapid rocky (4) + rapid asphalt (6) + rapid rocky (4) + normal asphalt (7) + subtle rocky (8) + normal sand (6) + normal rocky (7) + subtle asphalt (8)
-With cars: Car 9 with Pilot G, Car 20 with Pilot G, Car 4 with Pilot N, Car 4 with Pilot W, Car 4 with Pilot B
-The times are: [[96.73751345520175, Car 9 with Pilot G], [92.91817878332827, Car 20 with Pilot G], [102.3473766304071, Car 4 with Pilot N], [148.79336249531696, Car 4 with Pilot W], [139.66958580936762, Car 4 with Pilot B]]
+Using track: rapid sand (3) + subtle rocky (4) + rapid asphalt (6) + rapid asphalt (9) +
+     subtle rocky (9) + normal rocky (8) + rapid mud (4) + rapid sand (6) + subtle rocky (9) +
+     normal rocky (6) + normal asphalt (3) + subtle asphalt (6) + rapid rocky (4) +
+     rapid asphalt (6) + rapid rocky (4) + normal asphalt (7) + subtle rocky (8) +
+     normal sand (6) + normal rocky (7) + subtle asphalt (8)
+With cars: Car 9 with Pilot G, Car 20 with Pilot G, Car 4 with Pilot N, Car 4 with Pilot W,
+     Car 4 with Pilot B
+The times are: [[96.73751345520175, Car 9 with Pilot G], [92.91817878332827, Car 20 with Pilot G],
+    [102.3473766304071, Car 4 with Pilot N],
+    [148.79336249531696, Car 4 with Pilot W],
+    [139.66958580936762, Car 4 with Pilot B]]
 THE WINNER IS Car 20 with Pilot G
 
-IMPORTANT: essayer de faire un commit git pour l'ajout de chaque Classe (avec sa méthode __init__) et un commit par méthode de classe / méthode d'instance. On devrait donc avoir minimum 6-8 commits, une douzaine de commits est correct mais une vingtaine ferait un peu beaucoup (à moins que ce soit pour rajouter des améliorations hors-sujet).
+IMPORTANT: essayer de faire un commit git pour l'ajout de chaque Classe (avec sa méthode __init__)
+et un commit par méthode de classe / méthode d'instance.
+On devrait donc avoir minimum 6-8 commits, une douzaine de commits est correct mais une vingtaine
+ferait un peu beaucoup (à moins que ce soit pour rajouter des améliorations hors-sujet).
 
 Voici le début du programme pour se lancer:
 """
@@ -52,7 +66,32 @@ Voici le début du programme pour se lancer:
 from string import ascii_uppercase
 from random import random, randint, choice as randchoice
 
-TERRAINS = ["asphalt", "sand", "mud", "rocky"]
-COMPLEXITIES = ["normal", "rapid", "subtle"]
 
 class TrackPart:
+    """
+    This class help to create part of a track
+    """
+
+    MIN_LENGTH = 0
+    MAX_LENGTH = 10
+    TERRAINS = ["asphalt", "sand", "mud", "rocky"]
+    COMPLEXITIES = ["normal", "rapid", "subtle"]
+
+    def __init__(self):
+        """
+        When a trackpart object is created the 3 parameters were randomly created
+        """
+        self.length = randint(self.MIN_LENGTH, self.MAX_LENGTH)
+        self.terrain = randchoice(self.TERRAINS)
+        self.complexity = randchoice(self.COMPLEXITIES)
+
+def main():
+    """
+    In this main function, we print out all the results
+    """
+    track_part = TrackPart()
+
+    print(track_part.length, track_part.terrain, track_part.complexity)
+
+if __name__ == '__main__':
+    main()
