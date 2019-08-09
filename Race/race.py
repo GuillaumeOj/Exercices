@@ -69,7 +69,7 @@ from random import random, randint, choice as randchoice
 
 class TrackPart:
     """
-    This class help to create part of a track
+    This class help to create parts of a track
     """
 
     MIN_LENGTH = 0
@@ -84,6 +84,24 @@ class TrackPart:
         self.length = randint(self.MIN_LENGTH, self.MAX_LENGTH)
         self.terrain = randchoice(self.TERRAINS)
         self.complexity = randchoice(self.COMPLEXITIES)
+
+
+class Track:
+    """
+    Tis class create a Track object composed of TrackParts
+    By default, a Track is made of 20 TrackParts
+    """
+
+    TRACKPARTS_NUMBER = 20
+
+    def __init__(self):
+        """
+        Initialize Track with two atributes:
+            - The default number of trackparts
+            - An empty list of trackparts
+        """
+        self._trackparts_number = self.TRACKPARTS_NUMBER
+        self.trackparts_list = list()
 
 def main():
     """
