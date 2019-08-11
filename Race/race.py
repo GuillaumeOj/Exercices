@@ -64,7 +64,7 @@ Voici le début du programme pour se lancer:
 """
 
 from string import ascii_uppercase
-from random import random, randint, choice as randchoice
+from random import random, randint, choice as randchoice, uniform
 
 
 class TrackPart:
@@ -102,6 +102,27 @@ class Track:
         """
         self._trackparts_number = self.TRACKPARTS_NUMBER
         self.trackparts_list = list()
+
+
+class Pilot:
+    """
+    Create a pilot with:
+        - A name
+        - A speed for 'normal' trackparts
+        - A speed for 'rapid' trackparts
+        - A speed for 'subtle' trackparts
+    """
+
+    LETTERS = ascii_uppercase
+
+    def __init__(self):
+        """
+        Initialize each attributes for Pilot
+        """
+        self.name = randchoice(self.LETTERS)
+        self.normal_speed = randint(5, 15) /10
+        self.rapid_speed = randint(5, 15) /10
+        self.subtle_speed = randint(5, 15) /10
 
 def main():
     """
