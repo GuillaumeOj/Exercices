@@ -124,6 +124,30 @@ class Pilot:
         self.rapid_speed = randint(5, 15) /10
         self.subtle_speed = randint(5, 15) /10
 
+
+class Car:
+    """
+    Create a car wit:
+        - A name
+        - A pilot generated with the class Pilot()
+        - A speed for 'asphalt' trackparts
+        - A speed for 'sand' trackparts
+        - A speed for 'mud' trackparts
+        - A speed for 'rocky' trackparts
+    """
+
+    def __init__(self):
+        """
+        Initialize each attributes for Car
+        """
+        self.name = ranchoice(1, 20)
+        self.pilot = Pilot()
+        self.asphalt_speed = randint(5, 15) /10
+        self.sand_speed = randint(5, 15) /10
+        self.mud_speed = randint(5, 15) /10
+        self.rocky_speed = randint(5, 15) /10
+
+
 def main():
     """
     In this main function, we print out all the results
