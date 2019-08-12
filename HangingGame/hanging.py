@@ -1,7 +1,7 @@
 # -*- coding:utf-8 -*-
 """
 Author : GuillaumeOj
-Version : 2019-08
+Version : 2019-08-01
 Source : https://bit.ly/2OFDxLc
 
 
@@ -53,12 +53,12 @@ def main():
 
         # We inform the player about her/his score
         print('\nYoure score is now {}'.format(score))
+        
+        # Save the player's score
+        functions.save_gamer(pseudo, score)
 
         # Ask the player if she/he wants to continue
         game_continue = functions.continue_menu()
-
-    # Save the player's score
-    functions.save_gamer(pseudo, score)
 
 if __name__ == '__main__':
     main()
