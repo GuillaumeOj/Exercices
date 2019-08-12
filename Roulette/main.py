@@ -5,7 +5,7 @@ Author: GuillaumeOj
 Context: OpenClassrooms course
 https://openclassrooms.com/fr/courses/235344-apprenez-a-programmer-en-python
 
-Version: 2019.07
+Version: 2019.08
 
 This program is a game for playing roulette. Rules or not exactly the real one
 for simplify the program.
@@ -14,21 +14,22 @@ Rules:
 1. The player bet on a number between 0 and 49
 2. Even numbers or black and odd numbers or red.
 3. If the number is the one bet by the player, he win 3 time the bet
-4. If the number is the same color bet by the plauer, he win 50% of the bet
+4. If the number is the same color bet by the player, he win 50% of the bet
 """
 from random import randrange
 from math import ceil
 
 def main():
     """
-    Youpla
+    Here is the main part of the program
+    It's were the player is gaming
     """
 
     player_bank = -1
     player_bet = 0
     game = True
 
-    print("============= WELCOME IN ZCASIN0 =============")
+    print("============= WELCOME TO ZCASIN0 =============")
 
     # Roulette asking player how much he wants to play
     while player_bank == -1:
@@ -45,7 +46,7 @@ def main():
             player_bank = -1
         else:
             print("----")
-            print("Ok, you have", player_bank, "$! Let's play!!")
+            print("OK, you have", player_bank, "$! Let's play!!")
             print("----")
 
     while player_bank > 0 and game:
@@ -105,19 +106,20 @@ def game_bet(player_bank):
             player_bet = input("--> Please give me a bet: ")
             player_bet = int(player_bet)
 
-            assert player_bet in range(1, player_bank + 1)
+            assert player_bet >= 1 and player_bet <= player_bank
         except ValueError:
             print("Give me a real integer")
             player_bet = -1
         except AssertionError:
             print("Give me a bet between 1 and", player_bank)
+            player_bet = -1
         else:
             player_bank -= player_bet
             return player_bet, player_bank
 
 def game_roulette():
     """
-    The roulette giv a random number between 0 and 49
+    The roulette give a random number between 0 and 49
     """
 
     return randrange(0, 49)
