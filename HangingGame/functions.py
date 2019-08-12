@@ -95,8 +95,8 @@ def game(lives, hanging_tree, word, hidden_word):
         try:
             print('\nThe word to find is: {}'.format(''.join(hidden_word)))
             player_letter = input('==> Type a letter: ')
-            player_letter = player_letter[0].upper()
-            assert player_letter in 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+            player_letter = player_letter.upper()
+            assert (player_letter in 'ABCDEFGHIJKLMNOPQRSTUVWXYZ') and (len(player_letter) == 1)
         except AssertionError:
             print('Please type a correct letter.')
             continue
