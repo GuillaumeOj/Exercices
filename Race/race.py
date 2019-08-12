@@ -66,24 +66,25 @@ Voici le début du programme pour se lancer:
 from string import ascii_uppercase
 from random import random, randint, choice as randchoice, uniform
 
+MIN_LENGTH = 0
+MAX_LENGTH = 10
+TERRAINS = ["asphalt", "sand", "mud", "rocky"]
+COMPLEXITIES = ["normal", "rapid", "subtle"]
+TRACKPARTS_QUANTITY = 20
+LETTERS = ascii_uppercase
 
 class TrackPart:
     """
     This class help to create parts of a track
     """
 
-    MIN_LENGTH = 0
-    MAX_LENGTH = 10
-    TERRAINS = ["asphalt", "sand", "mud", "rocky"]
-    COMPLEXITIES = ["normal", "rapid", "subtle"]
-
     def __init__(self):
         """
         When a trackpart object is created the 3 parameters were randomly created
         """
-        self.length = randint(self.MIN_LENGTH, self.MAX_LENGTH)
-        self.terrain = randchoice(self.TERRAINS)
-        self.complexity = randchoice(self.COMPLEXITIES)
+        self.length = randint(MIN_LENGTH, MAX_LENGTH)
+        self.terrain = randchoice(TERRAINS)
+        self.complexity = randchoice(COMPLEXITIES)
 
 
 class Track:
@@ -92,23 +93,21 @@ class Track:
     By default, a Track is made of 20 TrackParts
     """
 
-    TRACKPARTS_NUMBER = 20
-
     def __init__(self):
         """
         Initialize Track with two atributes:
             - The default number of trackparts
             - An empty list of trackparts
         """
-        self._trackparts_number = self.TRACKPARTS_NUMBER
+        self._trackparts_quantity = TRACKPARTS_QUANTITY
         self.trackparts_list = list()
 
     def generate_track(self):
         """
-        Generate a track with 'trackparts_number'
+        Generate a track with '_trackparts_quantity'
         """
 
-        i = self._trackparts_number
+        i = self._trackparts_quantity
 
         while i > 0:
             self.trackparts_list.append(TrackPart())
@@ -139,8 +138,6 @@ class Pilot:
         - A speed for 'rapid' trackparts
         - A speed for 'subtle' trackparts
     """
-
-    LETTERS = ascii_uppercase
 
     def __init__(self):
         """
@@ -173,6 +170,7 @@ class Car:
         self.sand_speed = randint(5, 15) /10
         self.mud_speed = randint(5, 15) /10
         self.rocky_speed = randint(5, 15) /10
+        self.total_time = 0
 
     def time_for_part(self, trackpart):
         """
@@ -210,14 +208,9 @@ class Car:
         Calculate the time for the car on a track
         """
         self.track = track
-        self.total_time = 0
 
         for trackpart in self.track.trackparts_list:
             self.total_time += self.time_for_part(trackpart)
-
-        return self.total_time
-
-
 
 def main():
     """
