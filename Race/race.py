@@ -140,9 +140,9 @@ class Pilot:
         Initialize each attributes for Pilot
         """
         self.name = randchoice(self.LETTERS)
-        self.normal_speed = randint(5, 15) /10
-        self.rapid_speed = randint(5, 15) /10
-        self.subtle_speed = randint(5, 15) /10
+        self.normal_speed = random() + 0.5
+        self.rapid_speed = random() + 0.5
+        self.subtle_speed = random() + 0.5
 
 
 class Car:
@@ -162,10 +162,10 @@ class Car:
         """
         self.name = randint(1, 20)
         self.pilot = Pilot()
-        self.asphalt_speed = randint(5, 15) /10
-        self.sand_speed = randint(5, 15) /10
-        self.mud_speed = randint(5, 15) /10
-        self.rocky_speed = randint(5, 15) /10
+        self.asphalt_speed = random() + 0.5
+        self.sand_speed = random() + 0.5
+        self.mud_speed = random() + 0.5
+        self.rocky_speed = random() + 0.5
         self.total_time = 0
 
     def time_for_part(self, trackpart):
