@@ -102,16 +102,12 @@ class Track:
         self._trackparts_quantity = TRACKPARTS_QUANTITY
         self.trackparts_list = list()
 
-    def generate_track(self):
-        """
-        Generate a track with '_trackparts_quantity'
-        """
+        # Generate a track
+        i = 0
 
-        i = self._trackparts_quantity
-
-        while i > 0:
+        while i < self._trackparts_quantity:
             self.trackparts_list.append(TrackPart())
-            i -= 1
+            i += 1
 
     def print_track(self):
         """
