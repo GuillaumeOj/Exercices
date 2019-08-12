@@ -248,5 +248,11 @@ def main():
         cars_message += str(car)
     print(cars_message)
 
+    # Calculte time for each car
+    times = list()
+    for car in cars:
+        times.append([car.time_for_track(track), str(car)])
+    print('The times are: {}'.format(times))
+
 if __name__ == '__main__':
     main()
