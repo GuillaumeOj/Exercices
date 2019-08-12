@@ -114,6 +114,22 @@ class Track:
             self.trackparts_list.append(TrackPart())
             i -= 1
 
+    def print_track(self):
+        """
+        Print the track
+        """
+        self.track_message = str()
+        for self.trackparts in self.trackparts_list:
+            if self.track_message == '':
+                self.track_message = 'Using track: '
+            else:
+                self.track_message += '+ '
+            self.track_message += self.trackparts.complexity + ' '
+            self.track_message += self.trackparts.terrain + ' '
+            self.track_message += '(' + str(self.trackparts.length) + ') '
+
+        print(self.track_message)
+
 
 class Pilot:
     """
@@ -163,9 +179,11 @@ def main():
     """
     In this main function, we print out all the results
     """
+
+    # Create and print the track
     track = Track()
     track.generate_track()
-    print(track.trackparts_list[1].length)
+    track.print_track()
 
 if __name__ == '__main__':
     main()
