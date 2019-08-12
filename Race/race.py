@@ -103,6 +103,17 @@ class Track:
         self._trackparts_number = self.TRACKPARTS_NUMBER
         self.trackparts_list = list()
 
+    def generate_track(self):
+        """
+        Generate a track with 'trackparts_number'
+        """
+
+        i = self._trackparts_number
+
+        while i > 0:
+            self.trackparts_list.append(TrackPart())
+            i -= 1
+
 
 class Pilot:
     """
@@ -152,9 +163,9 @@ def main():
     """
     In this main function, we print out all the results
     """
-    track_part = TrackPart()
-
-    print(track_part.length, track_part.terrain, track_part.complexity)
+    track = Track()
+    track.generate_track()
+    print(track.trackparts_list[1].length)
 
 if __name__ == '__main__':
     main()
