@@ -167,12 +167,43 @@ class Car:
         """
         Initialize each attributes for Car
         """
-        self.name = ranchoice(1, 20)
+        self.name = randint(1, 20)
         self.pilot = Pilot()
         self.asphalt_speed = randint(5, 15) /10
         self.sand_speed = randint(5, 15) /10
         self.mud_speed = randint(5, 15) /10
         self.rocky_speed = randint(5, 15) /10
+
+    def time_for_part(self, trackpart):
+        """
+        Calculate the time for the car on each trackpart
+        """
+        # Speed depend on trakcpart terrain
+        if trackpart.terrain == 'asphalt':
+            self.terrain_speed = self.asphalt_speed
+        elif trackpart.terrain == 'sand':
+            self.terrain_speed = self.sand_speed
+        elif trackpart.terrain == 'mud':
+            self.terrain_speed = self.mud_speed
+        elif trackpart.terrain == 'rocky':
+            self.terrain_speed = self.rocky_speed
+        else:
+            raise ValueError('The terrain type does\'nt exist!' )
+
+        # Speed depend on trackpart complexity
+        if trackpart.complexity == 'normal':
+            self.pilot_speed = self.pilot.normal_speed
+        elif trackpart.complexity == 'rapid':
+            self.pilot_speed = self.pilot.rapid_speed
+        elif trackpart.complexity == 'subtle':
+            self.pilot_speed = self.pilot.subtle_speed
+        else:
+            raise ValueError('The complexity type does\'nt exist!' )
+
+        # Time for accomplish the part
+        self.time_part = self.terrain_speed * self.pilot_speed * trackpart.length
+
+        print(self.time_part)
 
 
 def main():
