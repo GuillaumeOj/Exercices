@@ -178,30 +178,30 @@ class Car:
         """
         # Speed depend on trakcpart terrain
         if trackpart.terrain == 'asphalt':
-            self.terrain_speed = self.asphalt_speed
+            terrain_speed = self.asphalt_speed
         elif trackpart.terrain == 'sand':
-            self.terrain_speed = self.sand_speed
+            terrain_speed = self.sand_speed
         elif trackpart.terrain == 'mud':
-            self.terrain_speed = self.mud_speed
+            terrain_speed = self.mud_speed
         elif trackpart.terrain == 'rocky':
-            self.terrain_speed = self.rocky_speed
+            terrain_speed = self.rocky_speed
         else:
             raise ValueError('The terrain type does\'nt exist!' )
 
         # Speed depend on trackpart complexity
         if trackpart.complexity == 'normal':
-            self.pilot_speed = self.pilot.normal_speed
+            pilot_speed = self.pilot.normal_speed
         elif trackpart.complexity == 'rapid':
-            self.pilot_speed = self.pilot.rapid_speed
+            pilot_speed = self.pilot.rapid_speed
         elif trackpart.complexity == 'subtle':
-            self.pilot_speed = self.pilot.subtle_speed
+            pilot_speed = self.pilot.subtle_speed
         else:
             raise ValueError('The complexity type does\'nt exist!' )
 
         # Time for accomplish the part
-        self.time_part = self.terrain_speed * self.pilot_speed * trackpart.length
+        time_part = terrain_speed * pilot_speed * trackpart.length
 
-        return self.time_part
+        return time_part
 
     def time_for_track(self, track):
         """
