@@ -207,9 +207,7 @@ class Car:
         """
         Calculate the time for the car on a track
         """
-        self.track = track
-
-        for trackpart in self.track.trackparts_list:
+        for trackpart in track.trackparts_list:
             self.total_time += self.time_for_part(trackpart)
 
 def main():
