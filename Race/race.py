@@ -64,7 +64,7 @@ Voici le début du programme pour se lancer:
 """
 
 from string import ascii_uppercase
-from random import random, randint, choice as randchoice, uniform
+from random import random, randint, choice as randchoice
 
 MIN_LENGTH = 0
 MAX_LENGTH = 10
@@ -72,6 +72,7 @@ TERRAINS = ["asphalt", "sand", "mud", "rocky"]
 COMPLEXITIES = ["normal", "rapid", "subtle"]
 TRACKPARTS_QUANTITY = 20
 LETTERS = ascii_uppercase
+CARS_QUANTITY = 5
 
 class TrackPart:
     """
@@ -143,7 +144,7 @@ class Pilot:
         """
         Initialize each attributes for Pilot
         """
-        self.name = randchoice(self.LETTERS)
+        self.name = randchoice(LETTERS)
         self.normal_speed = random() + 0.5
         self.rapid_speed = random() + 0.5
         self.subtle_speed = random() + 0.5
@@ -160,6 +161,8 @@ class Car:
         - A speed for 'rocky' trackparts
     """
 
+    cars_list = list()
+
     def __init__(self):
         """
         Initialize each attributes for Car
@@ -171,6 +174,12 @@ class Car:
         self.mud_speed = random() + 0.5
         self.rocky_speed = random() + 0.5
         self.total_time = 0
+
+    def __str__(self):
+        """
+        Modify the representation of the 'Car' for using it in a message
+        """
+        return 'Car {} with Pilot {}'.format(self.name, self.pilot.name)
 
     def time_for_part(self, trackpart):
         """
@@ -210,6 +219,8 @@ class Car:
         for trackpart in track.trackparts_list:
             self.total_time += self.time_for_part(trackpart)
 
+        return self.total_time
+
 def main():
     """
     In this main function, we print out all the results
@@ -218,6 +229,24 @@ def main():
     # Create and print the track
     track = Track()
     print(track)
+
+    # Generate 'CARS_QUANTITY' 'Car'
+    cars = list()
+
+    i = 0
+    while i < CARS_QUANTITY:
+        cars.append(Car())
+        i += 1
+    
+    # Print cars for the race
+    cars_message = str()
+    for car in cars:
+        if cars_message == '':
+            cars_message = 'With cars: '
+        else:
+            cars_message += ', '
+        cars_message += str(car)
+    print(cars_message)
 
 if __name__ == '__main__':
     main()
