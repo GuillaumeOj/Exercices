@@ -254,5 +254,9 @@ def main():
         times.append([car.time_for_track(track), str(car)])
     print('The times are: {}'.format(times))
 
+    # And the winner is
+    times.sort(reverse=True)
+    print('THE WINNER IS {}'.format(times[0][1]))
+
 if __name__ == '__main__':
     main()
