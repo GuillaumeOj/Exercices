@@ -203,7 +203,20 @@ class Car:
         # Time for accomplish the part
         self.time_part = self.terrain_speed * self.pilot_speed * trackpart.length
 
-        print(self.time_part)
+        return self.time_part
+
+    def time_for_track(self, track):
+        """
+        Calculate the time for the car on a track
+        """
+        self.track = track
+        self.total_time = 0
+
+        for trackpart in self.track.trackparts_list:
+            self.total_time += self.time_for_part(trackpart)
+
+        return self.total_time
+
 
 
 def main():
