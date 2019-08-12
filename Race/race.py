@@ -195,7 +195,7 @@ class Car:
         elif trackpart.terrain == 'rocky':
             terrain_speed = self.rocky_speed
         else:
-            raise ValueError('The terrain type does\'nt exist!' )
+            raise ValueError('The terrain type does\'nt exist!')
 
         # Speed depend on trackpart complexity
         if trackpart.complexity == 'normal':
@@ -205,7 +205,7 @@ class Car:
         elif trackpart.complexity == 'subtle':
             pilot_speed = self.pilot.subtle_speed
         else:
-            raise ValueError('The complexity type does\'nt exist!' )
+            raise ValueError('The complexity type does\'nt exist!')
 
         # Time for accomplish the part
         time_part = terrain_speed * pilot_speed * trackpart.length
@@ -237,7 +237,7 @@ def main():
     while i < CARS_QUANTITY:
         cars.append(Car())
         i += 1
-    
+
     # Print cars for the race
     cars_message = str()
     for car in cars:
