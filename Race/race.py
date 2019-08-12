@@ -86,6 +86,12 @@ class TrackPart:
         self.terrain = randchoice(TERRAINS)
         self.complexity = randchoice(COMPLEXITIES)
 
+    def __str__(self):
+        """
+        Modify the representation of the object for using it in a message
+        """
+        return '{} {} ({})'.format(self.complexity, self.terrain, self.length)
+
 
 class Track:
     """
@@ -109,21 +115,19 @@ class Track:
             self.trackparts_list.append(TrackPart())
             i += 1
 
-    def print_track(self):
+    def __str__(self):
         """
-        Print the track
+        Modify the representation of the 'Track' for using it in a message
         """
-        self.track_message = str()
-        for self.trackparts in self.trackparts_list:
-            if self.track_message == '':
-                self.track_message = 'Using track: '
+        track_message = str()
+        for trackparts in self.trackparts_list:
+            if track_message == '':
+                track_message = 'Using track: '
             else:
-                self.track_message += '+ '
-            self.track_message += self.trackparts.complexity + ' '
-            self.track_message += self.trackparts.terrain + ' '
-            self.track_message += '(' + str(self.trackparts.length) + ') '
+                track_message += ' + '
+            track_message += str(trackparts)
 
-        print(self.track_message)
+        return track_message
 
 
 class Pilot:
@@ -215,8 +219,7 @@ def main():
 
     # Create and print the track
     track = Track()
-    track.generate_track()
-    track.print_track()
+    print(track)
 
 if __name__ == '__main__':
     main()
