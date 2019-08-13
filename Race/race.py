@@ -152,7 +152,7 @@ class Pilot:
 
 class Car:
     """
-    Create a car wit:
+    Create a car with:
         - A name
         - A pilot generated with the class Pilot()
         - A speed for 'asphalt' trackparts
@@ -160,8 +160,6 @@ class Car:
         - A speed for 'mud' trackparts
         - A speed for 'rocky' trackparts
     """
-
-    cars_list = list()
 
     def __init__(self):
         """
@@ -175,7 +173,7 @@ class Car:
         self.rocky_speed = random() + 0.5
         self.total_time = 0
 
-    def __str__(self):
+    def __repr__(self):
         """
         Modify the representation of the 'Car' for using it in a message
         """
@@ -232,26 +230,14 @@ def main():
 
     # Generate 'CARS_QUANTITY' 'Car'
     cars = list()
-
     i = 0
     while i < CARS_QUANTITY:
         cars.append(Car())
         i += 1
-
-    # Print cars for the race
-    cars_message = str()
-    for car in cars:
-        if cars_message == '':
-            cars_message = 'With cars: '
-        else:
-            cars_message += ', '
-        cars_message += str(car)
-    print(cars_message)
+    print('With cars: {}'.format(', '.join([str(car) for car in cars])))
 
     # Calculte time for each car
-    times = list()
-    for car in cars:
-        times.append([car.time_for_track(track), str(car)])
+    times = [[car.time_for_track(track), str(car)] for car in cars]
     print('The times are: {}'.format(times))
 
     # And the winner is
