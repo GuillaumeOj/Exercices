@@ -74,6 +74,8 @@ TRACKPARTS_QUANTITY = 20
 LETTERS = ascii_uppercase
 CARS_QUANTITY = 5
 
+#pylint: disable=too-few-public-methods
+
 class TrackPart:
     """
     This class help to create parts of a track
