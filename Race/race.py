@@ -104,17 +104,10 @@ class Track:
         """
         Initialize Track with two atributes:
             - The default number of trackparts
-            - An empty list of trackparts
+            - A list of trackparts
         """
         self._trackparts_quantity = TRACKPARTS_QUANTITY
-        self.trackparts_list = list()
-
-        # Generate a track
-        i = 0
-
-        while i < self._trackparts_quantity:
-            self.trackparts_list.append(TrackPart())
-            i += 1
+        self.trackparts_list = [TrackPart() for track_part in range(self._trackparts_quantity)]
 
     def __str__(self):
         """
@@ -241,7 +234,7 @@ def main():
     print('The times are: {}'.format(times))
 
     # And the winner is
-    times.sort(reverse=True)
+    times.sort()
     print('THE WINNER IS {}'.format(times[0][1]))
 
 if __name__ == '__main__':
