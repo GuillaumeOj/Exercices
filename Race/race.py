@@ -160,11 +160,11 @@ class Car:
         self.rocky_speed = random() + 0.5
         self.total_time = 0
 
-    def __repr__(self):
+    def __str__(self):
         """
         Modify the representation of the 'Car' for using it in a message
         """
-        return 'Car {} with Pilot {}'.format(self.name, self.pilot.name)
+        return f'Car {self.name} with Pilot {self.pilot.name}'
 
     def time_for_part(self, trackpart):
         """
