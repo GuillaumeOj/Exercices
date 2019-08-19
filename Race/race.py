@@ -226,7 +226,7 @@ def main():
 
     # And the winner is
     times.sort()
-    print('THE WINNER IS {}'.format(times[0][1]))
+    print(f'THE WINNER IS {times[0][1]}')
 
 if __name__ == '__main__':
     main()
