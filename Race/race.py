@@ -113,15 +113,9 @@ class Track:
         """
         Modify the representation of the 'Track' for using it in a message
         """
-        track_message = str()
-        for trackparts in self.trackparts_list:
-            if track_message == '':
-                track_message = 'Using track: '
-            else:
-                track_message += ' + '
-            track_message += str(trackparts)
+        track_list = ' + '.join([str(trackpart) for trackpart in self.trackparts_list])
 
-        return track_message
+        return f'Using track: {track_list}'
 
 
 class Pilot:
