@@ -91,7 +91,7 @@ class TrackPart:
         """
         Modify the representation of the object for using it in a message
         """
-        return '{} {} ({})'.format(self.complexity, self.terrain, self.length)
+        return f'{self.complexity} {self.terrain} ({self.length})'
 
 
 class Track:
