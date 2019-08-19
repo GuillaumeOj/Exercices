@@ -216,12 +216,9 @@ def main():
     print(track)
 
     # Generate 'CARS_QUANTITY' 'Car'
-    cars = list()
-    i = 0
-    while i < CARS_QUANTITY:
-        cars.append(Car())
-        i += 1
-    print('With cars: {}'.format(', '.join([str(car) for car in cars])))
+    cars = [Car() for car in range(CARS_QUANTITY)]
+    cars_list = ', '.join([str(car) for car in cars])
+    print(f'With cars: {cars_list}')
 
     # Calculte time for each car
     times = [[car.time_for_track(track), str(car)] for car in cars]
