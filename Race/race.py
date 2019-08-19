@@ -220,9 +220,9 @@ def main():
     cars_list = ', '.join([str(car) for car in cars])
     print(f'With cars: {cars_list}')
 
-    # Calculte time for each car
+    # Calculate time for each car
     times = [[car.time_for_track(track), str(car)] for car in cars]
-    print('The times are: {}'.format(times))
+    print(f'The times are: {times}')
 
     # And the winner is
     times.sort()
