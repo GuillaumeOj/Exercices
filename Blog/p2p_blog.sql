@@ -160,6 +160,15 @@ VALUES (1, 2),
 
 SELECT * FROM Post_categories;
 
+-- Insert comments for the post 1
+INSERT INTO Comments (comment, comment_date, post_id, author_id)
+VALUES ('One comment for all humans', '2019-11-05 13:36:00', 1, 2),
+       ('Wonderfull!', '2019-11-06 13:36:00', 1, NULL),
+       ('Why it is so complicated to read?', '2019-11-18 00:36:00', 1, 1),
+       ('Maybe because it\'s to late...', '2019-11-18 01:36:00', 1, 1);
+
+SELECT * FROM Comments;
+
 -- Home page
 SELECT 'Home page';
 SELECT Posts.title,
