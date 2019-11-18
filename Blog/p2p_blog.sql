@@ -190,4 +190,19 @@ WHERE Posts.id IN
 ORDER BY Posts.post_date DESC;
 
 -- Post page
+SELECT 'Post 1 page';
+SELECT Posts.title,
+       Posts.post_date,
+       Posts.post_text,
+       Users.pseudo AS author_name
+FROM Posts
+INNER JOIN Users ON Users.id = Posts.author_id
+WHERE Posts.id = 1;
 
+SELECT Comments.comment,
+       Comments.comment_date,
+       Users.pseudo AS author_name
+FROM Comments
+INNER JOIN Users ON Users.id = Comments.author_id
+WHERE Comments.post_id = 1
+ORDER BY Comments.comment_date DESC;

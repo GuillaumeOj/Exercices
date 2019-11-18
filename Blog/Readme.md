@@ -56,8 +56,8 @@
 - [x] ORDER BY Posts.post_date
 
 ### Post page
-- [ ] Posts.title
-- [ ] Posts.post_text
-- [ ] Posts.post_date
-- [ ] Comments.comment (ORDER BY Comments.comment_date DESC)
-- [ ] WHERE Posts.id = 1
+- [x] Posts.title
+- [x] Posts.post_text
+- [x] Posts.post_date
+- [x] Comments.comment (ORDER BY Comments.comment_date DESC)
+- [x] WHERE Posts.id = 1
