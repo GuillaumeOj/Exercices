@@ -199,7 +199,7 @@ WHERE Posts.id IN
 ORDER BY Posts.post_date DESC;
 
 -- Post page
-SELECT 'Post 1 page';
+SELECT 'Page for post number 1';
 SELECT Posts.title,
        Posts.post_date,
        Posts.post_text,
