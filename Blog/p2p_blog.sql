@@ -161,7 +161,7 @@ VALUES (1, 2),
 SELECT * FROM Post_categories;
 
 -- Home page
-SELECT 'Homme page';
+SELECT 'Home page';
 SELECT Posts.title,
        Posts.post_date,
        Users.pseudo AS author,
