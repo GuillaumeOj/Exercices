@@ -37,7 +37,7 @@
 ### Home page
 - [x] Posts.title
 - [x] Posts.post_date
-- [x] user.name
+- [x] Users.pseudo
 - [x] Posts.sample
 - [x] ORDER BY Posts.post_date DESC
 
@@ -45,7 +45,7 @@
 - [x] Posts.title
 - [x] Posts.post_date
 - [x] Posts.sample
-- [x] WHERE user.id = 1
+- [x] WHERE Users.id = 1
 - [x] ORDER BY Posts.post_date DESC
 
 ### Category page
