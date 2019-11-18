@@ -1,15 +1,11 @@
 
--- /!\ REMOVE BEFORE SENDING /!\
-
-DROP DATABASE IF EXISTS p2p_blog;
-
--- /!\ CAREFULL /!\
+DROP DATABASE IF EXISTS my_blog;
 
 -- Create the database
-CREATE DATABASE p2p_blog CHARACTER SET 'utf8';
+CREATE DATABASE my_blog CHARACTER SET 'utf8';
 
 -- Switch for using the database
-USE p2p_blog;
+USE my_blog;
 
 -- Create a table for the categories
 CREATE TABLE Categories (
