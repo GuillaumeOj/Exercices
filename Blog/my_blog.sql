@@ -210,4 +210,4 @@ SELECT Comments.comment,
 FROM Comments
 INNER JOIN Users ON Users.id = Comments.author_id
 WHERE Comments.post_id = 1
-ORDER BY Comments.comment_date DESC;
+ORDER BY Comments.comment_date;
