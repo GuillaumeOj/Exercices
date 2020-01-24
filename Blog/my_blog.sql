@@ -178,3 +178,24 @@ FROM Article
 JOIN Utilisateur ON Utilisateur.id = Article.auteur_id
 WHERE Article.auteur_id = 1
 ORDER BY Article.date_publication DESC;
+
+-- Page de l'article
+SELECT Article.titre as 'Page de l\'article "2"'
+FROM Article
+WHERE Article.id = 2;
+
+SELECT Article.titre,
+       Article.date_publication,
+       Article.contenu,
+       Utilisateur.pseudo AS nom_auteur_article
+FROM Article
+JOIN Utilisateur ON Utilisateur.id = Article.auteur_id
+WHERE Article.id = 2;
+
+SELECT Commentaire.contenu,
+       DATE_FORMAT(Commentaire.date_commentaire, '%d/%m/%Y'),
+       Utilisateur.pseudo AS nom_auteur_commentaire
+FROM Commentaire
+JOIN Utilisateur ON Utilisateur.id = Commentaire.auteur_id
+WHERE Commentaire.article_id = 2
+ORDER BY Commentaire.date_commentaire;
