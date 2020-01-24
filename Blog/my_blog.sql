@@ -158,6 +158,7 @@ ORDER BY Article.date_publication DESC;
 SELECT Categorie.nom as 'Page de la catégorie "2"'
 FROM Categorie
 WHERE Categorie.id = 2;
+
 SELECT Article.titre,
        Article.date_publication,
        Categorie.nom
@@ -171,6 +172,7 @@ ORDER BY Article.date_publication DESC;
 SELECT Utilisateur.pseudo as 'Page de l\'utilisateur "1"'
 FROM Utilisateur
 WHERE Utilisateur.id = 1;
+
 SELECT Article.titre,
        Article.date_publication,
        Utilisateur.pseudo
