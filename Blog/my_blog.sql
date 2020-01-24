@@ -166,3 +166,15 @@ JOIN Categorie_article ON Categorie_article.article_id = Article.id
 JOIN Categorie ON Categorie.id = Categorie_article.categorie_id
 WHERE Categorie.id = 2
 ORDER BY Article.date_publication DESC;
+
+-- Page auteur
+SELECT Utilisateur.pseudo as 'Page de l\'utilisateur "1"'
+FROM Utilisateur
+WHERE Utilisateur.id = 1;
+SELECT Article.titre,
+       Article.date_publication,
+       Utilisateur.pseudo
+FROM Article
+JOIN Utilisateur ON Utilisateur.id = Article.auteur_id
+WHERE Article.auteur_id = 1
+ORDER BY Article.date_publication DESC;
