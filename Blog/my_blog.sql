@@ -11,42 +11,42 @@ USE blog_p2p;
 **/
 -- Tables
 CREATE TABLE Article (
-  id INT UNSIGNED AUTO_INCREMENT,
-  titre VARCHAR(200) NOT NULL,
-  resume TEXT,
-  contenu TEXT NOT NULL,
-  auteur_id INT UNSIGNED NOT NULL,
-  date_publication DATETIME NOT NULL,
-  PRIMARY KEY(id)
+    id INT UNSIGNED AUTO_INCREMENT,
+    titre VARCHAR(200) NOT NULL,
+    resume TEXT,
+    contenu TEXT NOT NULL,
+    auteur_id INT UNSIGNED NOT NULL,
+    date_publication DATETIME NOT NULL,
+    PRIMARY KEY(id)
 );
 
 CREATE TABLE Utilisateur (
-  id INT UNSIGNED AUTO_INCREMENT,
-  pseudo VARCHAR(100) NOT NULL,
-  email VARCHAR(200) NOT NULL,
-  password CHAR(40) NOT NULL,  -- le mot de passe sera hashé avec sha1, ce qui donne toujours une chaîne de 40 caractères
-  PRIMARY KEY(id)
+    id INT UNSIGNED AUTO_INCREMENT,
+    pseudo VARCHAR(100) NOT NULL,
+    email VARCHAR(200) NOT NULL,
+    password CHAR(40) NOT NULL,  -- le mot de passe sera hashé avec sha1, ce qui donne toujours une chaîne de 40 caractères
+    PRIMARY KEY(id)
 );
 
 CREATE TABLE Categorie (
-  id INT UNSIGNED AUTO_INCREMENT,
-  nom VARCHAR(150) NOT NULL,
-  PRIMARY KEY(id)
+    id INT UNSIGNED AUTO_INCREMENT,
+    nom VARCHAR(150) NOT NULL,
+    PRIMARY KEY(id)
 );
 
 CREATE TABLE Categorie_article (
-  categorie_id INT UNSIGNED,
-  article_id INT UNSIGNED,
-  PRIMARY KEY (categorie_id, article_id)
+    categorie_id INT UNSIGNED,
+    article_id INT UNSIGNED,
+    PRIMARY KEY (categorie_id, article_id)
 );
 
 CREATE TABLE Commentaire (
-  id INT UNSIGNED AUTO_INCREMENT,
-  article_id INT UNSIGNED NOT NULL,
-  auteur_id INT UNSIGNED,
-  contenu TEXT NOT NULL,
-  date_commentaire DATETIME NOT NULL,
-  PRIMARY KEY(id)
+    id INT UNSIGNED AUTO_INCREMENT,
+    article_id INT UNSIGNED NOT NULL,
+    auteur_id INT UNSIGNED,
+    contenu TEXT NOT NULL,
+    date_commentaire DATETIME NOT NULL,
+    PRIMARY KEY(id)
 );
 
 -- Clés étrangères
@@ -143,11 +143,13 @@ INSERT INTO Commentaire (article_id, auteur_id, contenu, date_commentaire) VALUE
 
 
 -- Page principale
-SELECT 'Page principale';
-SELECT Article.titre,
-       Article.date_publication,
-       Utilisateur.pseudo AS auteur,
-       COUNT(Commentaire.id) as nombre_commentaires
+SELECT 'Page d\'accueil';
+SELECT
+    DATE_FORMAT(Article.date_publication, '%d/%m/%Y') AS date_publication,
+    Utilisateur.pseudo AS auteur,
+    Article.titre,
+    Article.resume,
+    COUNT(Commentaire.id) AS nombre_commentaires
 FROM Article
 JOIN Utilisateur ON Utilisateur.id = Article.auteur_id
 JOIN Commentaire ON Commentaire.article_id = Article.id
@@ -159,9 +161,10 @@ SELECT Categorie.nom as 'Page de la catégorie "2"'
 FROM Categorie
 WHERE Categorie.id = 2;
 
-SELECT Article.titre,
-       Article.date_publication,
-       Categorie.nom
+SELECT 
+    Article.titre,
+    Article.date_publication,
+    Categorie.nom
 FROM Article
 JOIN Categorie_article ON Categorie_article.article_id = Article.id
 JOIN Categorie ON Categorie.id = Categorie_article.categorie_id
@@ -173,9 +176,10 @@ SELECT Utilisateur.pseudo as 'Page de l\'utilisateur "1"'
 FROM Utilisateur
 WHERE Utilisateur.id = 1;
 
-SELECT Article.titre,
-       Article.date_publication,
-       Utilisateur.pseudo
+SELECT
+    Article.titre,
+    Article.date_publication,
+    Utilisateur.pseudo
 FROM Article
 JOIN Utilisateur ON Utilisateur.id = Article.auteur_id
 WHERE Article.auteur_id = 1
@@ -186,17 +190,19 @@ SELECT Article.titre as 'Page de l\'article "2"'
 FROM Article
 WHERE Article.id = 2;
 
-SELECT Article.titre,
-       Article.date_publication,
-       Article.contenu,
-       Utilisateur.pseudo AS nom_auteur_article
+SELECT 
+    Article.titre,
+    Article.date_publication,
+    Article.contenu,
+    Utilisateur.pseudo AS nom_auteur_article
 FROM Article
 JOIN Utilisateur ON Utilisateur.id = Article.auteur_id
 WHERE Article.id = 2;
 
-SELECT Commentaire.contenu,
-       DATE_FORMAT(Commentaire.date_commentaire, '%d/%m/%Y'),
-       Utilisateur.pseudo AS nom_auteur_commentaire
+SELECT 
+    Commentaire.contenu,
+    DATE_FORMAT(Commentaire.date_commentaire, '%d/%m/%Y'),
+    Utilisateur.pseudo AS nom_auteur_commentaire
 FROM Commentaire
 JOIN Utilisateur ON Utilisateur.id = Commentaire.auteur_id
 WHERE Commentaire.article_id = 2
