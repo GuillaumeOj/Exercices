@@ -153,3 +153,16 @@ JOIN Utilisateur ON Utilisateur.id = Article.auteur_id
 JOIN Commentaire ON Commentaire.article_id = Article.id
 GROUP BY Article.id
 ORDER BY Article.date_publication DESC;
+
+-- Page catégorie
+SELECT Categorie.nom as 'Page de la catégorie "2"'
+FROM Categorie
+WHERE Categorie.id = 2;
+SELECT Article.titre,
+       Article.date_publication,
+       Categorie.nom
+FROM Article
+JOIN Categorie_article ON Categorie_article.article_id = Article.id
+JOIN Categorie ON Categorie.id = Categorie_article.categorie_id
+WHERE Categorie.id = 2
+ORDER BY Article.date_publication DESC;
