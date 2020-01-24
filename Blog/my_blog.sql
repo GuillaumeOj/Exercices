@@ -174,18 +174,19 @@ WHERE Article.auteur_id = 2
 ORDER BY Article.date_publication DESC;
 
 -- Page catégorie
-SELECT Categorie.nom as 'Page de la catégorie "2"'
+SELECT Categorie.nom as 'Page de la catégorie "3"'
 FROM Categorie
-WHERE Categorie.id = 2;
+WHERE Categorie.id = 3;
 
-SELECT 
+SELECT
+    DATE_FORMAT(Article.date_publication, '%d/%m/%Y - %k:%i') AS date_publication,
+    Utilisateur.pseudo,
     Article.titre,
-    Article.date_publication,
-    Categorie.nom
+    Article.resume
 FROM Article
+JOIN Utilisateur ON utilisateur.id = Article.auteur_id
 JOIN Categorie_article ON Categorie_article.article_id = Article.id
-JOIN Categorie ON Categorie.id = Categorie_article.categorie_id
-WHERE Categorie.id = 2
+WHERE Categorie_article.categorie_id = 3
 ORDER BY Article.date_publication DESC;
 
 -- Page de l'article
