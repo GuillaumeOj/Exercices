@@ -140,3 +140,16 @@ INSERT INTO Commentaire (article_id, auteur_id, contenu, date_commentaire) VALUE
   Fin de la base
   ===============================================
 **/
+
+
+-- Page principale
+SELECT 'Page principale';
+SELECT Article.titre,
+       Article.date_publication,
+       Utilisateur.pseudo AS auteur,
+       COUNT(Commentaire.id) as nombre_commentaires
+FROM Article
+JOIN Utilisateur ON Utilisateur.id = Article.auteur_id
+JOIN Commentaire ON Commentaire.article_id = Article.id
+GROUP BY Article.id
+ORDER BY Article.date_publication DESC;
