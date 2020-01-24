@@ -206,6 +206,7 @@ JOIN Categorie_article ON Categorie_article.article_id = Article.id
 JOIN Categorie ON Categorie.id = Categorie_article.categorie_id
 WHERE Article.id = 4;
 
+-- Commentaires associés à l'article
 SELECT 
     Commentaire.contenu AS commentaire,
     DATE_FORMAT(Commentaire.date_commentaire, '%d/%m/%Y') AS date_commentaire,
