@@ -141,6 +141,7 @@ INSERT INTO Commentaire (article_id, auteur_id, contenu, date_commentaire) VALUE
   ===============================================
 **/
 
+SET lc_time_names = 'fr_FR';
 
 -- Page principale
 SELECT 'Page d\'accueil';
