@@ -15,3 +15,5 @@ Each directory is an exercice during my learning time. For bigger projetcs see m
     Create an Hanging Game with modules.
 5. [Race](Race/):
     Create a race game by using Classes and Methods.
+6. [Blog](Blog/):
+    Create a blog with MySQL.
